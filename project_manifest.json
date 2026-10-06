@@ -1,0 +1,20 @@
+{
+  "project": "Password Strength Analyzer & Security Suggestion Tool",
+  "stack": [
+    "Python",
+    "Flask",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "SQLite",
+    "pytest"
+  ],
+  "privacy": [
+    "No plaintext password storage",
+    "No password logging by application code",
+    "No password in analytics",
+    "No password in API response",
+    "No password in URL"
+  ],
+  "test_exit_code": 2
+}

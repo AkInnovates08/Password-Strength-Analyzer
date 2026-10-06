@@ -1,0 +1,25 @@
+flowchart TD
+    U[User] --> UI[Secure Web Interface]
+    UI --> API[Flask API]
+    API --> MEM[In-Memory Password Analysis]
+    MEM --> L[Length Analyzer]
+    MEM --> C[Character Analyzer]
+    MEM --> CP[Common Password Checker]
+    MEM --> S[Sequence Detector]
+    MEM --> K[Keyboard Pattern Detector]
+    MEM --> R[Repetition Detector]
+    MEM --> CTX[Optional Context Checker]
+    MEM --> E[Entropy Estimator]
+    L --> SCORE[Strength Scoring Engine]
+    C --> SCORE
+    CP --> SCORE
+    S --> SCORE
+    K --> SCORE
+    R --> SCORE
+    CTX --> SCORE
+    E --> SCORE
+    SCORE --> REC[Classification + Suggestions]
+    REC --> UI
+    SCORE --> META[Safe Aggregate Metadata]
+    META --> DB[(SQLite Analytics)]
+    DB --> DASH[Dashboard]

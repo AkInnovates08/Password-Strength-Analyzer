@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy-focused password strength analyzer">
+  <title>Password Strength Analyzer</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Password Strength Analyzer</h1>
+    <p>Defensive cybersecurity project - password input is analyzed transiently.</p>
+  </div>
+  <nav>
+    <a href="#analyzer">Analyzer</a>
+    <a href="#generator">Generator</a>
+    <a href="#policy">Policy</a>
+    <a href="#dashboard">Dashboard</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section id="analyzer" class="card hero">
+    <div class="section-title">
+      <div>
+        <span class="eyebrow">LOCAL ANALYSIS</span>
+        <h2>Password analysis engine</h2>
+      </div>
+      <span id="classification" class="badge neutral">READY</span>
+    </div>
+
+    <label for="password">Password</label>
+    <div class="password-row">
+      <input id="password" type="password" autocomplete="new-password"
+             placeholder="Enter a synthetic/demo password">
+      <button id="togglePassword" type="button" class="secondary">Show</button>
+    </div>
+
+    <div class="meter">
+      <div id="meterFill"></div>
+    </div>
+    <div class="score-line">
+      <strong>Score: <span id="score">0</span>/100</strong>
+      <span id="lengthBand">Length: —</span>
+    </div>
+
+    <div class="context-grid">
+      <div>
+        <label for="firstName">Optional demo first name</label>
+        <input id="firstName" placeholder="Not stored">
+      </div>
+      <div>
+        <label for="birthYear">Optional demo birth year</label>
+        <input id="birthYear" placeholder="Not stored">
+      </div>
+      <div>
+        <label for="companyCollege">Optional demo company/college</label>
+        <input id="companyCollege" placeholder="Not stored">
+      </div>
+    </div>
+
+    <p class="privacy-note">Privacy design: passwords and optional context are processed in memory and are not stored. Analytics stores only aggregate metadata.</p>
+
+    <div class="grid two">
+      <div>
+        <h3>Findings</h3>
+        <ul id="findings" class="list"></ul>
+      </div>
+      <div>
+        <h3>Security suggestions</h3>
+        <ul id="suggestions" class="list"></ul>
+      </div>
+    </div>
+
+    <div class="metrics-grid" id="metrics"></div>
+  </section>
+
+  <section id="generator" class="card">
+    <div class="section-title">
+      <div>
+        <span class="eyebrow">DEFENSIVE FEATURE</span>
+        <h2>Secure password generator</h2>
+      </div>
+    </div>
+    <div class="generator-controls">
+      <label>Length
+        <input id="genLength" type="number" min="16" max="128" value="20">
+      </label>
+      <label><input id="genUpper" type="checkbox" checked> Uppercase</label>
+      <label><input id="genLower" type="checkbox" checked> Lowercase</label>
+      <label><input id="genDigits" type="checkbox" checked> Numbers</label>
+      <label><input id="genSymbols" type="checkbox" checked> Symbols</label>
+      <button id="generateBtn">Generate</button>
+    </div>
+    <div class="generated">
+      <input id="generatedPassword" type="password" readonly>
+      <button id="copyGenerated" class="secondary">Copy</button>
+    </div>
+    <p class="privacy-note">Generated passwords are not stored by the application.</p>
+  </section>
+
+  <section id="policy" class="card">
+    <div class="section-title">
+      <div>
+        <span class="eyebrow">POLICY VS STRENGTH</span>
+        <h2>Password policy checker</h2>
+      </div>
+      <span id="policyStatus" class="badge neutral">READY</span>
+    </div>
+    <p>Policy compliance is separate from the strength score. Default policy: minimum 12 characters, common passwords rejected, spaces allowed.</p>
+    <button id="policyBtn">Check Current Password</button>
+    <ul id="policyFailures" class="list"></ul>
+  </section>
+
+  <section id="dashboard" class="card">
+    <div class="section-title">
+      <div>
+        <span class="eyebrow">SAFE AGGREGATE ANALYTICS</span>
+        <h2>Dashboard</h2>
+      </div>
+      <button id="refreshDashboard" class="secondary">Refresh</button>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><span>Total Analyses</span><strong id="totalAnalyses">0</strong></div>
+      <div class="stat"><span>Average Score</span><strong id="averageScore">0</strong></div>
+      <div class="stat"><span>Very Weak</span><strong id="veryWeak">0</strong></div>
+      <div class="stat"><span>Strong+</span><strong id="strongPlus">0</strong></div>
+    </div>
+    <div class="grid two">
+      <div>
+        <h3>Strength distribution</h3>
+        <div id="strengthChart" class="bars"></div>
+      </div>
+      <div>
+        <h3>Common weakness types</h3>
+        <div id="weaknessChart" class="bars"></div>
+      </div>
+    </div>
+    <p class="privacy-note">No password, password hash, or reversible credential is used for analytics.</p>
+  </section>
+
+  <section class="card awareness">
+    <h2>10 Password Security Rules</h2>
+    <ol>
+      <li>Use unique passwords for different accounts.</li>
+      <li>Prefer longer passwords or randomly selected passphrases.</li>
+      <li>Avoid predictable personal information.</li>
+      <li>Avoid common passwords and keyboard walks.</li>
+      <li>Do not reuse passwords across services.</li>
+      <li>Use a password manager for unique credentials.</li>
+      <li>Enable MFA where available.</li>
+      <li>Never share passwords with other people or support agents.</li>
+      <li>Be cautious of phishing pages and suspicious login requests.</li>
+      <li>Change credentials when compromise is suspected or confirmed.</li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <p>Educational defensive-security project. Strength scoring is project-defined and not a universal security standard.</p>
+</footer>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
